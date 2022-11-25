@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.el-date-picker {
-    margin-bottom: 3em;
+.--log-card {
+  margin-top: 0;
 }
 </style>
