@@ -4,24 +4,31 @@
             <h2>Tags</h2>
             <p>Add tags to help you search for specific entries</p>
         </div>
-        <el-select
-            v-model="userValue"
-            multiple
-            filterable
-            allow-create
-            default-first-option
-            :reserve-keyword="false"
-            placeholder="Choose tags or create a new one"
-            tag-type="info"
-        >
-            <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            />
-        </el-select>
-        <el-button @click="saveTags()" plain color="#a78bfa"> Add </el-button>
+        <el-form>
+            <el-form-item>
+                <el-select
+                    v-model="userValue"
+                    multiple
+                    filterable
+                    allow-create
+                    default-first-option
+                    :reserve-keyword="false"
+                    placeholder="Choose tags or create a new one"
+                    tag-type="info"
+                    size="large"
+                >
+                    <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    />
+                </el-select>
+            </el-form-item>
+            <el-button @click="saveTags()" plain color="#a78bfa" size="large">
+                Add
+            </el-button>
+        </el-form>
     </el-card>
 </template>
 
@@ -61,11 +68,13 @@ export default {
 
 <style scoped lang="scss">
 .el-card {
-    .el-select {
-        width: 20em;
+    .el-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
     .el-button {
-        margin-left: 1em;
+        font-family: 'Poppins', sans-serif;
     }
 }
 </style>

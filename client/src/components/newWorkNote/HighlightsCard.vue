@@ -11,49 +11,34 @@
                 <el-input
                     v-model="log.title"
                     label="Enter a highlight of the day"
-                    tabindex="2"
                     placeholder="What did you do today?"
                     clearable
                     size="large"
                 >
-                    <template #append>
-                        <el-button @click="onSubmit(log)"> Add </el-button>
-                    </template>
                 </el-input>
             </el-form-item>
+            <el-button @click="onSubmit()" plain color="#a78bfa" size="large">
+                Save
+            </el-button>
         </el-form>
-<!--        <div id="highlights-content" v-for="item in highlights">-->
-<!--            <p>-->
-<!--                {{ item.title }}-->
-<!--            </p>-->
-<!--            <el-icon> <XMarkIcon/></el-icon>-->
-<!--        </div>-->
     </el-card>
 </template>
 
 <script>
-import { XMarkIcon } from '@heroicons/vue/24/outline';
-
 export default {
     name: 'HighlightsCard',
-    components: {
-        XMarkIcon
-    },
+    components: {},
     data() {
         return {
             log: {
                 title: '',
             },
-            highlights: [
-                {
-                    title: 'item 1',
-                },
-            ],
         };
     },
     methods: {
-        onSubmit(log) {
-            this.highlights.push(log);
+        onSubmit() {
+            this.$emit('updateHighlights', this.log.title);
+            this.log.title = '';
         },
     },
 };
@@ -61,17 +46,14 @@ export default {
 
 <style scoped lang="scss">
 .el-card {
-    #highlights-content {
+    .el-form {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
-        align-items: center;
+    }
 
-        p {
-            color: var(--gray-700);
-        }
-        .el-icon {
-            font-size: 20px;
-        }
+    .el-button {
+        font-family: 'Poppins', sans-serif;
     }
 }
 </style>

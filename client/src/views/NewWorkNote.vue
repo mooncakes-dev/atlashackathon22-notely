@@ -14,19 +14,29 @@
                 </el-col>
             </el-row>
             <el-row>
-                <el-col :xs="24" :lg="12">
+                <el-col :xs="20" :lg="12">
                     <el-row>
                         <DatePicker @saveDate="updateDate($event)" />
                     </el-row>
-                    <el-row> <HighlightsCard /></el-row>
                     <el-row> <Tags @newTag="updateTags($event)" /></el-row>
-                    <el-row> <Report /> </el-row>
-                    <el-button color="#65a30d" size="large" plain id="saveBtn">
-                        Save</el-button
-                    >
+                    <el-row>
+                        <HighlightsCard
+                            @updateHighlights="updateHighlights($event)"
+                    /></el-row>
+                    <el-row>
+                        <Report @sendReport="updateReport($event)" />
+                    </el-row>
                 </el-col>
-                <el-col :lg="12">
-                    <PreviewDay :date="dayLog.date" :tags="dayLog.tags" />
+                <el-col :lg="8">
+                    <PreviewDay
+                        :date="dayLog.date"
+                        :tags="dayLog.tags"
+                        :highlights="dayLog.highlights"
+                        :report="dayLog.report"
+                    />
+                    <el-button color="#65a30d" size="large" plain id="saveBtn">
+                        Save
+                    </el-button>
                 </el-col>
             </el-row>
         </el-main>
@@ -53,7 +63,7 @@ export default {
     },
     data() {
         return {
-            dayLog: { date: '', tags: [] },
+            dayLog: { date: '', tags: [], highlights: [], report: '' },
         };
     },
 
@@ -63,6 +73,12 @@ export default {
         },
         updateTags(newTag) {
             this.dayLog.tags.push(...newTag);
+        },
+        updateHighlights(newHighlight) {
+            this.dayLog.highlights.push(newHighlight);
+        },
+        updateReport(newReport) {
+            this.dayLog.report = newReport;
         },
     },
 };

@@ -1,7 +1,9 @@
 <template>
     <div class="container">
-        <h1>Notely</h1>
-<!--        <img src="@/assets/logo.png" alt="logo icon" />-->
+        <router-link to="/">
+            <h1>Notely</h1>
+        </router-link>
+        <!--        <img src="@/assets/logo.png" alt="logo icon" />-->
     </div>
 </template>
 
@@ -21,6 +23,10 @@ export default {
     display: flex;
     align-items: center;
     gap: 2px;
+
+  a {
+    text-decoration: none;
+  }
 
     img {
         width: 6.2em;

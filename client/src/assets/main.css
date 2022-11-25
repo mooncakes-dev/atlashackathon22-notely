@@ -14,10 +14,15 @@
     --indigo-500: #6366f1;
     --indigo-100: #e0e7ff;
 
+    --lime-700: #4d7c0f;
     --lime-600: #65a30d;
     --lime-500: #84cc16;
     --lime-200: #d9f99d;
     --lime-100: #ecfccb;
+
+    --red-700: #b91c1c;
+    --red-600: #dc2626;
+    --red-500: #ef4444;
 
     --box-shadow: 0px 0px 20px 16px rgba(226, 232, 240, 0.18);
 }
@@ -28,6 +33,8 @@ body {
 }
 
 /*Overwrite element components*/
+
+/* Card Overwrites */
 .el-card {
     border-radius: 10px;
     border: none;
@@ -48,7 +55,21 @@ body {
     font-size: 14px;
 }
 
+/* Calendar */
 .el-popper.is-light {
     border: 1px solid var(--slate-200);
     border-radius: 10px;
+}
+
+/* TODO: This needs refactoring */
+
+.el-date-table td.available:hover {
+    color: var(--indigo-700);
+}
+
+.el-date-table td.today .el-date-table-cell__text {
+    color: var(--indigo-500);
+}
+.el-date-table td.current:not(.disabled) .el-date-table-cell__text {
+    background-color: var(--indigo-500);
 }
