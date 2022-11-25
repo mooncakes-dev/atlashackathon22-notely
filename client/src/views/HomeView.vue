@@ -1,17 +1,28 @@
 <template>
     <el-container>
-        <el-header>
-            <Navbar />
-        </el-header>
-
         <el-main>
             <el-row>
                 <el-col :span="24">
                     <header id="header">
                         <h1>Your Notes</h1>
-                        <el-button :icon="Plus" circle plain  color="#6366f1"/>
+                        <router-link to="/new-work-note">
+                            <el-button
+                                :icon="PlusIcon"
+                                circle
+                                plain
+                                color="#6366f1"
+                            />
+                        </router-link>
                     </header>
                 </el-col>
+            </el-row>
+            <el-row>
+                <el-autocomplete
+                    placeholder="Search"
+                    clearable
+                    :prefix-icon="MagnifyingGlassIcon"
+                    size="large"
+                />
             </el-row>
             <el-row>
                 <el-col :xs="24" :sm="20" :md="18" :lg="10">
@@ -28,9 +39,8 @@
 </template>
 
 <script setup>
-import { Plus } from '@element-plus/icons-vue';
-import Navbar from '../components/Navbar.vue';
-import NoteCard from '../components/NoteCard.vue';
+import { PlusIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+import NoteCard from '@/components/NoteCard.vue';
 
 const notes = [
     {
@@ -65,11 +75,14 @@ const notes = [
                 font-weight: 500;
             }
 
-          .el-button {
-            box-shadow: var(--box-shadow);
-          }
+            .el-button {
+                box-shadow: var(--box-shadow);
+            }
         }
 
+        .el-autocomplete {
+            margin-bottom: 3em;
+        }
         .note-card {
             margin-bottom: 3em;
         }

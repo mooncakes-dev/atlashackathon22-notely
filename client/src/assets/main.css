@@ -14,10 +14,21 @@
     --indigo-500: #6366f1;
     --indigo-100: #e0e7ff;
 
+    --lime-600: #65a30d;
+    --lime-500: #84cc16;
+    --lime-200: #d9f99d;
+    --lime-100: #ecfccb;
+
     --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 body {
     color: var(--slate-800);
     font-family: 'Poppins', sans-serif;
+}
+
+
+.el-card {
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
 }

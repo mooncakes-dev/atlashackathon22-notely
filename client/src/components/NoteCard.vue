@@ -8,7 +8,7 @@
                     </el-col>
 
                     <el-col :span="2">
-                        <el-button :icon="Edit" circle plain color="#94a3b8"/>
+                        <el-button :icon="PencilSquareIcon" circle plain color="#94a3b8"/>
                     </el-col>
                 </el-row>
             </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { Edit } from '@element-plus/icons-vue';
+import { PencilSquareIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
     date: { type: Date },
@@ -31,10 +31,12 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .el-card {
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
 
+  .el-row {
+    align-items: end;
+  }
   .card-header {
+    align-items: end;
     color: var(--slate-700);
     font-size: 16px;
     font-weight: 600;

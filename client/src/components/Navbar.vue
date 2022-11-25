@@ -1,13 +1,7 @@
 <template>
     <div class="container">
         <h1>Notely</h1>
-        <el-autocomplete
-            placeholder="Search"
-            clearable
-            class="w-50 m-2"
-            :prefix-icon="Search"
-            size="large"
-        />
+<!--        <img src="@/assets/logo.png" alt="logo icon" />-->
     </div>
 </template>
 
@@ -22,11 +16,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 2px;
+
+    img {
+        width: 6.2em;
+        height: 5em;
+    }
+
+    h1 {
+        color: var(--slate-700);
+    }
 }
 </style>
