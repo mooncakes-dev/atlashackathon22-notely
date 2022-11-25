@@ -18,11 +18,17 @@
                     <el-row>
                         <DatePicker @saveDate="updateDate($event)" />
                     </el-row>
-                    <el-row> <Tags @newTag="updateTags($event)" /></el-row>
+                    <el-row>
+                        <Tags
+                            @newTag="updateTags($event)"
+                            @tagRemoval="removeTag($event)"
+                    /></el-row>
                     <el-row>
                         <HighlightsCard
                             @updateHighlights="updateHighlights($event)"
-                    /></el-row>
+                            @highlightRemoval="removeHighlight($event)"
+                        />
+                    </el-row>
                     <el-row>
                         <Report @sendReport="updateReport($event)" />
                     </el-row>
@@ -79,6 +85,20 @@ export default {
         },
         updateReport(newReport) {
             this.dayLog.report = newReport;
+        },
+        /* Functions to update log day, if items were removed in the preview component
+         * Take tag & highlight updates
+         */
+        removeTag(tag) {
+            console.log('Old Tag Array' + this.dayLog.tags);
+            this.dayLog.tags.push(tag);
+            console.log('Updated tag array: ' + this.dayLog.tags);
+        },
+
+        removeHighlight(item) {
+            this.dayLog.highlights.push(item);
+          console.log('Updated highlight array: ' + this.dayLog.highlights);
+
         },
     },
 };

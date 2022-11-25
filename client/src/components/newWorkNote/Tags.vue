@@ -1,7 +1,9 @@
 <template>
     <el-card class="--log-card">
         <div id="card-header">
-            <h2>Tags</h2>
+            <h2>
+                <el-icon> <HashtagIcon /></el-icon> Tags
+            </h2>
             <p>Add tags to help you search for specific entries</p>
         </div>
         <el-form>
@@ -34,9 +36,13 @@
 
 <script>
 // TODO: Save user created tags - Array Some(?)
+import { HashtagIcon } from '@heroicons/vue/24/outline';
 
 export default {
     name: 'Tags.vue',
+    components: {
+        HashtagIcon,
+    },
     data() {
         return {
             userValue: '',

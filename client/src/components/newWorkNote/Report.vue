@@ -1,8 +1,10 @@
 <template>
     <el-card class="--log-card">
         <div id="card-header">
-            <h2>Detailed Report</h2>
-            <p>Treat this as a journal entry, inlude as much as you see fit</p>
+            <h2>
+                <el-icon> <DocumentTextIcon /></el-icon>Detailed Report
+            </h2>
+            <p>Treat this as a journal entry, include as much as you see fit</p>
         </div>
         <el-input
             v-model="reportText"
@@ -10,13 +12,19 @@
             type="textarea"
             placeholder="Please input"
         />
-        <el-button @click="saveReport()" plain color="#a78bfa" size="large"> Save </el-button>
+        <el-button @click="saveReport()" plain color="#a78bfa" size="large">
+            Save
+        </el-button>
     </el-card>
 </template>
 
 <script>
+import { DocumentTextIcon } from '@heroicons/vue/24/outline';
 export default {
     name: 'Report',
+    components: {
+        DocumentTextIcon,
+    },
     data() {
         return {
             reportText: '',
@@ -33,8 +41,8 @@ export default {
 <style scoped lang="scss">
 .el-card {
     .el-button {
-      font-family: 'Poppins', sans-serif;
-      margin-top: 1em;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 1em;
     }
 }
 </style>

@@ -42,10 +42,12 @@ export default {
     methods: {
         removeTag(tag) {
             this.tags.splice(this.tags.indexOf(tag), 1);
+            this.$emit('tagRemoval', this.tags);
         },
 
         removeHighlight(item) {
             this.highlights.splice(this.highlights.indexOf(item), 1);
+            this.$emit('highlightRemoval', this.highlights);
         },
     },
 };

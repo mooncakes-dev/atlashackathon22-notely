@@ -1,7 +1,9 @@
 <template>
     <el-card class="--log-card">
         <div id="card-header">
-            <h2>Highlights</h2>
+            <h2>
+                <el-icon><SunIcon /></el-icon>Highlights
+            </h2>
             <p>
                 Treat this as an outline of your day that you can quickly scan
             </p>
@@ -25,9 +27,10 @@
 </template>
 
 <script>
+import { SunIcon } from '@heroicons/vue/24/outline';
 export default {
     name: 'HighlightsCard',
-    components: {},
+    components: { SunIcon },
     data() {
         return {
             log: {

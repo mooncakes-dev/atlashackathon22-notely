@@ -45,6 +45,11 @@ body {
     padding: 0.8em;
     width: 30em;
 }
+.el-card.--log-card #card-header .el-icon {
+    color: var(--lime-500);
+    font-size: 20px;
+    margin-right: 0.5em;
+}
 .el-card.--log-card #card-header h2 {
     color: var(--slate-700);
     margin: 0;
