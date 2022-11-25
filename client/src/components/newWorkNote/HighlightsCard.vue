@@ -7,14 +7,14 @@
             </p>
         </div>
         <el-form label-position="top" @submit.prevent="onSubmit()">
-            <el-form-item label="Name">
+            <el-form-item>
                 <el-input
                     v-model="log.title"
                     label="Enter a highlight of the day"
-                    tabindex="1"
+                    tabindex="2"
                     placeholder="What did you do today?"
                     clearable
-                    large
+                    size="large"
                 >
                     <template #append>
                         <el-button @click="onSubmit(log)"> Add </el-button>
@@ -22,15 +22,23 @@
                 </el-input>
             </el-form-item>
         </el-form>
-        <div id="highlights-content" v-for="item in highlights">
-            <p>{{ item.title }}</p>
-        </div>
+<!--        <div id="highlights-content" v-for="item in highlights">-->
+<!--            <p>-->
+<!--                {{ item.title }}-->
+<!--            </p>-->
+<!--            <el-icon> <XMarkIcon/></el-icon>-->
+<!--        </div>-->
     </el-card>
 </template>
 
 <script>
+import { XMarkIcon } from '@heroicons/vue/24/outline';
+
 export default {
-    name: 'highlightsCard',
+    name: 'HighlightsCard',
+    components: {
+        XMarkIcon
+    },
     data() {
         return {
             log: {
@@ -53,6 +61,9 @@ export default {
 
 <style scoped lang="scss">
 .el-card {
+    margin-top: 3em;
+    padding: 0.8em;
+
     #card-header {
         h2 {
             color: var(--slate-700);
@@ -62,12 +73,20 @@ export default {
         p {
             color: var(--slate-500);
             margin-top: 0;
+            font-size: 14px;
         }
     }
 
     #highlights-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         p {
             color: var(--gray-700);
+        }
+        .el-icon {
+            font-size: 20px;
         }
     }
 }
