@@ -2,7 +2,7 @@
     <el-container>
         <el-main>
             <el-row>
-                <el-col :span="24">
+                <el-col :span="12">
                     <header id="header">
                         <div id="icon">
                             <el-icon color="#84cc16">
@@ -13,20 +13,51 @@
                     </header>
                 </el-col>
             </el-row>
-            <el-row> <highlights-card /></el-row>
+            <el-row>
+                <el-col :xs="24" :lg="12">
+                    <el-row>
+                        <DatePicker @saveDate="updateDate($event)" />
+                    </el-row>
+                    <el-row> <HighlightsCard /></el-row>
+                    <el-row> <Tags /></el-row>
+                    <el-button color="#65a30d" size="large" plain id="saveBtn">
+                        Save</el-button
+                    >
+                </el-col>
+                <el-col :lg="12">
+                    <PreviewDay :date="dayLog.date" />
+                </el-col>
+            </el-row>
         </el-main>
     </el-container>
 </template>
 
 <script>
 import { DocumentPlusIcon } from '@heroicons/vue/24/solid';
-import highlightsCard from '@/components/newWorkNote/highlightsCard.vue';
+import HighlightsCard from '@/components/newWorkNote/HighlightsCard.vue';
+import DatePicker from '@/components/newWorkNote/DatePicker.vue';
+import Tags from '@/components/newWorkNote/Tags.vue';
+import PreviewDay from '@/components/newWorkNote/PreviewDay.vue';
 
 export default {
     name: 'new-work-note',
     components: {
         DocumentPlusIcon,
-        highlightsCard,
+        HighlightsCard,
+        DatePicker,
+        Tags,
+        PreviewDay,
+    },
+    data() {
+        return {
+            dayLog: { date: '' },
+        };
+    },
+
+    methods: {
+        updateDate(newDate) {
+            this.dayLog.date = newDate;
+        },
     },
 };
 </script>
@@ -40,6 +71,10 @@ export default {
         align-items: center;
         gap: 15px;
         margin: 2em auto;
+
+        h1 {
+            font-size: 28px;
+        }
 
         #icon {
             background-color: var(--lime-200);
@@ -59,6 +94,16 @@ export default {
             color: var(--slate-500);
             font-weight: 300;
         }
+    }
+
+    #saveBtn {
+        border-radius: 5px;
+        box-shadow: var(--box-shadow);
+        font-family: 'Poppins', sans-serif;
+        margin-top: 2em;
+
+        width: 6em;
+        height: 3em;
     }
 }
 </style>
