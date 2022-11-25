@@ -19,13 +19,14 @@
                         <DatePicker @saveDate="updateDate($event)" />
                     </el-row>
                     <el-row> <HighlightsCard /></el-row>
-                    <el-row> <Tags /></el-row>
+                    <el-row> <Tags @newTag="updateTags($event)" /></el-row>
+                    <el-row> <Report /> </el-row>
                     <el-button color="#65a30d" size="large" plain id="saveBtn">
                         Save</el-button
                     >
                 </el-col>
                 <el-col :lg="12">
-                    <PreviewDay :date="dayLog.date" />
+                    <PreviewDay :date="dayLog.date" :tags="dayLog.tags" />
                 </el-col>
             </el-row>
         </el-main>
@@ -37,11 +38,13 @@ import { DocumentPlusIcon } from '@heroicons/vue/24/solid';
 import HighlightsCard from '@/components/newWorkNote/HighlightsCard.vue';
 import DatePicker from '@/components/newWorkNote/DatePicker.vue';
 import Tags from '@/components/newWorkNote/Tags.vue';
+import Report from '@/components/newWorkNote/Report.vue';
 import PreviewDay from '@/components/newWorkNote/PreviewDay.vue';
 
 export default {
     name: 'new-work-note',
     components: {
+        Report,
         DocumentPlusIcon,
         HighlightsCard,
         DatePicker,
@@ -50,13 +53,16 @@ export default {
     },
     data() {
         return {
-            dayLog: { date: '' },
+            dayLog: { date: '', tags: [] },
         };
     },
 
     methods: {
         updateDate(newDate) {
             this.dayLog.date = newDate;
+        },
+        updateTags(newTag) {
+            this.dayLog.tags.push(...newTag);
         },
     },
 };

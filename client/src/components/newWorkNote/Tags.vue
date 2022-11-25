@@ -1,5 +1,5 @@
 <template>
-    <el-card>
+    <el-card class="--log-card">
         <div id="card-header">
             <h2>Tags</h2>
             <p>Add tags to help you search for specific entries</p>
@@ -12,20 +12,22 @@
             default-first-option
             :reserve-keyword="false"
             placeholder="Choose tags or create a new one"
-            tag-type="primary"
+            tag-type="info"
         >
             <el-option
                 v-for="item in options"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
-                @click="checkIfExists(item.value)"
             />
         </el-select>
+        <el-button @click="saveTags()" plain color="#a78bfa"> Add </el-button>
     </el-card>
 </template>
 
 <script>
+// TODO: Save user created tags - Array Some(?)
+
 export default {
     name: 'Tags.vue',
     data() {
@@ -33,31 +35,25 @@ export default {
             userValue: '',
             options: [
                 {
-                    value: 'HTML',
-                    label: 'HTML',
+                    value: 'Meeting Heavy',
+                    label: 'Meeting Heavy',
                 },
                 {
-                    value: 'CSS',
-                    label: 'CSS',
+                    value: 'Focused Work',
+                    label: 'Focused Work',
                 },
                 {
-                    value: 'JavaScript',
-                    label: 'JavaScript',
+                    value: 'Slow Day',
+                    label: 'Slow Day',
                 },
             ],
         };
     },
     methods: {
-        checkIfExists(value) {
-            const exists = this.options.some((value) => {
-                return element.value === this.element.value;
-            });
-
-            if (!exists) {
-                this.options.push(this.value);
-            }
-
-            console.log(this.options);
+        saveTags() {
+            const tagsArr = this.userValue;
+            this.$emit('newTag', tagsArr);
+            this.userValue = '';
         },
     },
 };
@@ -65,20 +61,11 @@ export default {
 
 <style scoped lang="scss">
 .el-card {
-    margin-top: 3em;
-    padding: 0.8em;
-
-    #card-header {
-        h2 {
-            color: var(--slate-700);
-            margin: 0;
-        }
-
-        p {
-            color: var(--slate-500);
-            margin-top: 0;
-            font-size: 14px;
-        }
+    .el-select {
+        width: 20em;
+    }
+    .el-button {
+        margin-left: 1em;
     }
 }
 </style>

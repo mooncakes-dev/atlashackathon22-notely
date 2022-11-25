@@ -1,5 +1,5 @@
 <template>
-    <el-card>
+    <el-card class="--log-card">
         <div id="card-header">
             <h2>Highlights</h2>
             <p>
@@ -61,22 +61,6 @@ export default {
 
 <style scoped lang="scss">
 .el-card {
-    margin-top: 3em;
-    padding: 0.8em;
-
-    #card-header {
-        h2 {
-            color: var(--slate-700);
-            margin: 0;
-        }
-
-        p {
-            color: var(--slate-500);
-            margin-top: 0;
-            font-size: 14px;
-        }
-    }
-
     #highlights-content {
         display: flex;
         justify-content: space-between;
