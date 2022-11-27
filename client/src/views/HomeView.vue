@@ -4,14 +4,9 @@
             <el-row>
                 <el-col :span="24">
                     <header id="header">
-                        <h1>Your Notes</h1>
+                        <h1>Your Work Logs</h1>
                         <router-link to="/new-work-note">
-                            <el-button
-                                :icon="PlusIcon"
-                                circle
-                                plain
-                                color="#6366f1"
-                            />
+                            <el-button color="#6366f1">New Log</el-button>
                         </router-link>
                     </header>
                 </el-col>
@@ -24,13 +19,10 @@
                     size="large"
                 />
             </el-row>
-            <el-row>
-                <el-col :xs="24" :sm="20" :md="18" :lg="10">
-                    <div v-for="note in notes" class="note-card">
-                        <NoteCard
-                            :date="note.date"
-                            :highlights="note.highlights"
-                        />
+            <el-row id="notes-section">
+                <el-col :xs="24" :sm="20" :md="18" :lg="8">
+                    <div v-for="note in workNotes" class="note-card">
+                        <NoteCard :date="note.date" />
                     </div>
                 </el-col>
             </el-row>
@@ -39,27 +31,21 @@
 </template>
 
 <script setup>
-import { PlusIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+import { onMounted, computed } from 'vue';
+import { useWorkNoteStore } from '@/stores/workNoteStore';
+
+import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 import NoteCard from '@/components/NoteCard.vue';
 
-const notes = [
-    {
-        date: '12/03/2022',
-        highlights: [{ name: '1:1 w. Team Lead' }, { name: 'Product Demo' }],
-    },
-    {
-        date: '12/04/2022',
-        highlights: [{ name: '1:1 w. Team Lead' }, { name: 'Product Demo' }],
-    },
-    {
-        date: '12/05/2022',
-        highlights: [{ name: '1:1 w. Team Lead' }, { name: 'Product Demo' }],
-    },
-    {
-        date: '12/05/2022',
-        highlights: [{ name: '1:1 w. Team Lead' }, { name: 'Product Demo' }],
-    },
-];
+const store = useWorkNoteStore();
+
+const workNotes = computed(() => {
+    return store.workNotes;
+});
+
+onMounted(() => {
+    store.fetchAllWorkNotes();
+});
 </script>
 
 <style scoped lang="scss">
@@ -80,8 +66,8 @@ const notes = [
             }
         }
 
-        .el-autocomplete {
-            margin-bottom: 3em;
+        #notes-section {
+            margin-top: 3em;
         }
         .note-card {
             margin-bottom: 3em;

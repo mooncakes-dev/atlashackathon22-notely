@@ -1,19 +1,25 @@
 <template>
-    <el-card class="box-card">
+    <el-card>
         <template #header>
             <div class="card-header">
                 <el-row justify="space-between">
-                    <el-col :span="10">
+                    <el-col :xs="12" :sm="12" :md="10" :lg="10">
                         <span>{{ date }}</span>
                     </el-col>
 
-                    <el-col :span="2">
-                        <el-button :icon="PencilSquareIcon" circle plain color="#94a3b8"/>
+                    <el-col :xs="6" :sm="4" :md="4" :lg="4">
+                        <el-button text plain color="#f43f5e">
+                            Delete
+                        </el-button>
                     </el-col>
                 </el-row>
             </div>
         </template>
-        <h3>Daily Highlights:</h3>
+        <div id="highlights-section">
+            <!--            <el-icon><SunIcon /></el-icon>-->
+            <h3>Daily Highlights</h3>
+            <el-icon><SunIcon /></el-icon>
+        </div>
         <div v-for="item in highlights" class="text item">
             {{ item.name }}
         </div>
@@ -21,7 +27,7 @@
 </template>
 
 <script setup>
-import { PencilSquareIcon } from '@heroicons/vue/24/outline';
+import { SunIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
     date: { type: Date },
@@ -31,23 +37,32 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .el-card {
+    padding: 0.8em;
 
-  .el-row {
-    align-items: end;
-  }
-  .card-header {
-    align-items: end;
-    color: var(--slate-700);
-    font-size: 16px;
-    font-weight: 600;
-  }
+    .el-row {
+        align-items: end;
+    }
+    .card-header {
+        align-items: end;
+        color: var(--slate-700);
+        font-size: 16px;
+        font-weight: 600;
+    }
 
-  h3 {
-    color: var(--indigo-500);
-  }
+    #highlights-section {
+        color: var(--slate-700);
+        display: flex;
+        align-items: center;
+        gap: 1em;
 
-  .item {
-    color: var(--slate-600);
-  }
+        .el-icon {
+            color: var(--lime-500);
+            font-size: 24px;
+        }
+    }
+
+    .item {
+        color: var(--slate-600);
+    }
 }
 </style>
