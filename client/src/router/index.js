@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import NewWorkNote from '@/views/NewWorkNote.vue';
+import WorkNoteView from '@/views/WorkNoteView.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
             path: '/new-work-note',
             name: 'newNote',
             component: NewWorkNote,
+        },
+        {
+            path: '/work-note/:id',
+            name: 'work-note-details',
+            component: WorkNoteView,
         },
     ],
 });

@@ -30,7 +30,7 @@
 import { SunIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
-    date: { type: Date },
+    date: { type: String },
     highlights: { type: Array },
 });
 </script>

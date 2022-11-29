@@ -10,8 +10,9 @@
                     type="success"
                     effect="light"
                     v-for="tag in tags"
-                    >{{ tag }}</el-tag
                 >
+                    {{ tag }}
+                </el-tag>
             </el-descriptions-item>
         </el-descriptions>
         <h4>Highlights of the day</h4>
