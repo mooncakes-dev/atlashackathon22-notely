@@ -22,6 +22,11 @@
                 </el-row>
             </div>
         </template>
+        <div id="tags-section" v-for="tag in tags">
+            <el-tag>
+                {{ tag }}
+            </el-tag>
+        </div>
         <div id="highlights-section">
             <h3>Daily Highlights</h3>
             <el-icon> <SunIcon /></el-icon>
@@ -50,6 +55,7 @@ export default {
         id: { type: String },
         date: { type: String },
         highlights: { type: Array },
+        tags: { type: Array },
     },
     methods: {
         deleteWorkNote() {
@@ -81,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 .el-card {
     a {
-      color: var(--slate-700);
+        color: var(--slate-700);
         text-decoration: none;
     }
     padding: 0.8em;

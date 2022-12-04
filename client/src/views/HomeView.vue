@@ -29,6 +29,7 @@
                                 :id="note._id"
                                 :date="note.date"
                                 :highlights="note.highlights"
+                                :tags="note.tags"
                             />
                         </div>
                     </template>
@@ -41,6 +42,7 @@
                             :id="note._id"
                             :date="note.date"
                             :highlights="note.highlights"
+                            :tags="note.tags"
                         />
                     </div>
                 </el-col>
