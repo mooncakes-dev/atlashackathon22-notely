@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const workNotesRoutes = require("./routes/workNotes");
+const { MongoClient } = require("mongodb");
 
 // express app
 const app = express();
