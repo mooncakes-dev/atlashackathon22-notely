@@ -13,7 +13,7 @@
                                 </div>
                                 <h1>Summary for {{ currentNote.date }}</h1>
                             </el-col>
-                            <el-col :md="10" :lg="4">
+                            <el-col :md="8" :lg="10">
                                 <el-tag
                                     effect="light"
                                     class="custom-tag"
@@ -94,12 +94,12 @@ onMounted(() => {
     }
 
     .custom-tag {
-        background-color: var(--indigo-200);
-        color: var(--indigo-700);
+        background-color: var(--lime-200);
+        color: var(--lime-700);
         border-radius: 5px;
-        border: 1px solid var(--indigo-100);
+        border: 1px solid var(--lime-100);
         box-shadow: var(--box-shadow);
-        margin: 2em 1em;
+        margin: 2em 0.5em;
     }
 
     #work-summary {

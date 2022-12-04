@@ -44,5 +44,13 @@ export const useWorkNoteStore = defineStore('workNoteStore', {
                 console.log(err);
             }
         },
+
+        async deleteWorkNote(id) {
+            try {
+                return axios.delete(API_URL + id);
+            } catch (err) {
+                console.log(err);
+            }
+        },
     },
 });

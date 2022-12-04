@@ -22,9 +22,11 @@
             <el-row id="notes-section">
                 <el-col :xs="24" :sm="20" :md="18" :lg="8">
                     <div v-for="note in workNotes" class="note-card">
-                      <router-link :to="'/work-note/' + note._id">
-                        <NoteCard  :date="note.date" />
-                      </router-link>
+                        <NoteCard
+                            :id="note._id"
+                            :date="note.date"
+                            :highlights="note.highlights"
+                        />
                     </div>
                 </el-col>
             </el-row>
@@ -53,11 +55,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .el-container {
     .el-main {
-
-      a {
-        text-decoration: none;
-      }
-
         #header {
             display: flex;
             align-items: center;
