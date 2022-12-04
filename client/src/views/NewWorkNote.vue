@@ -57,6 +57,8 @@
 
 <script>
 import { DocumentPlusIcon } from '@heroicons/vue/24/solid';
+import { ElNotification } from 'element-plus';
+
 import HighlightsCard from '@/components/newWorkNote/HighlightsCard.vue';
 import DatePicker from '@/components/newWorkNote/DatePicker.vue';
 import Tags from '@/components/newWorkNote/Tags.vue';
@@ -64,6 +66,7 @@ import Report from '@/components/newWorkNote/Report.vue';
 import PreviewDay from '@/components/newWorkNote/PreviewDay.vue';
 
 import { useWorkNoteStore } from '@/stores/workNoteStore';
+import router from '@/router';
 
 export default {
     name: 'new-work-note',
@@ -78,14 +81,15 @@ export default {
     data() {
         return {
             dayLog: { date: '', tags: [], highlights: [], report: '' },
+            note_id: null,
         };
     },
 
-  setup() {
-    const workNoteStore = useWorkNoteStore()
+    setup() {
+        const workNoteStore = useWorkNoteStore();
 
-    return { workNoteStore }
-  },
+        return { workNoteStore };
+    },
 
     methods: {
         /* Functions to update each sections within the log day
@@ -130,7 +134,19 @@ export default {
             this.workNoteStore
                 .createWorkNote(payload)
                 .then((response) => {
-                    console.log(response.data);
+                    this.note_id = response.data._id;
+                    router.push({
+                        path: `/work-note/${this.note_id}`,
+                    });
+                })
+                .catch((error) => {
+                    ElNotification({
+                        title: 'Something went wrong',
+                        message:
+                            'Oof, we have messed up somewhere. Please try again',
+                        type: 'warning',
+                    });
+                    console.log(error);
                 });
         },
     },
