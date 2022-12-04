@@ -36,5 +36,13 @@ export const useWorkNoteStore = defineStore('workNoteStore', {
                 console.log(err);
             }
         },
+
+        async createWorkNote(payload) {
+            try {
+                return axios.post(API_URL, payload);
+            } catch (err) {
+                console.log(err);
+            }
+        },
     },
 });

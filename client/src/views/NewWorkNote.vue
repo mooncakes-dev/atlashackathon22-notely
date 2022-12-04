@@ -40,7 +40,13 @@
                         :highlights="dayLog.highlights"
                         :report="dayLog.report"
                     />
-                    <el-button color="#65a30d" size="large" plain id="saveBtn">
+                    <el-button
+                        color="#65a30d"
+                        size="large"
+                        plain
+                        id="saveBtn"
+                        @click="saveWorkNote()"
+                    >
                         Save
                     </el-button>
                 </el-col>
@@ -56,6 +62,8 @@ import DatePicker from '@/components/newWorkNote/DatePicker.vue';
 import Tags from '@/components/newWorkNote/Tags.vue';
 import Report from '@/components/newWorkNote/Report.vue';
 import PreviewDay from '@/components/newWorkNote/PreviewDay.vue';
+
+import { useWorkNoteStore } from '@/stores/workNoteStore';
 
 export default {
     name: 'new-work-note',
@@ -73,7 +81,16 @@ export default {
         };
     },
 
+  setup() {
+    const workNoteStore = useWorkNoteStore()
+
+    return { workNoteStore }
+  },
+
     methods: {
+        /* Functions to update each sections within the log day
+         * Takes: date, tags, highlights, report
+         */
         updateDate(newDate) {
             this.dayLog.date = newDate;
         },
@@ -86,19 +103,35 @@ export default {
         updateReport(newReport) {
             this.dayLog.report = newReport;
         },
+
         /* Functions to update log day, if items were removed in the preview component
          * Take tag & highlight updates
          */
         removeTag(tag) {
-            console.log('Old Tag Array' + this.dayLog.tags);
             this.dayLog.tags.push(tag);
-            console.log('Updated tag array: ' + this.dayLog.tags);
         },
 
         removeHighlight(item) {
             this.dayLog.highlights.push(item);
-          console.log('Updated highlight array: ' + this.dayLog.highlights);
+        },
 
+        /*
+         * Post new work note to server
+         */
+
+        saveWorkNote() {
+            const payload = {
+                date: this.dayLog.date,
+                tags: this.dayLog.tags,
+                highlights: this.dayLog.highlights,
+                report: this.dayLog.report,
+            };
+
+            this.workNoteStore
+                .createWorkNote(payload)
+                .then((response) => {
+                    console.log(response.data);
+                });
         },
     },
 };
