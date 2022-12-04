@@ -99,7 +99,7 @@ onMounted(() => {
         border-radius: 5px;
         border: 1px solid var(--indigo-100);
         box-shadow: var(--box-shadow);
-        margin: 2em auto;
+        margin: 2em 1em;
     }
 
     #work-summary {
