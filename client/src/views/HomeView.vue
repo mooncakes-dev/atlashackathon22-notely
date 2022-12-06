@@ -12,14 +12,16 @@
                 </el-col>
             </el-row>
             <el-row>
-                <el-input
-                    v-model="searchTerm"
-                    @input="searchNotes()"
-                    placeholder="Search"
-                    clearable
-                    :prefix-icon="MagnifyingGlassIcon"
-                    size="large"
-                />
+                <el-col span="12">
+                    <el-input
+                        v-model="searchTerm"
+                        @input="searchNotes()"
+                        placeholder="Search"
+                        clearable
+                        :prefix-icon="MagnifyingGlassIcon"
+                        size="large"
+                    />
+                </el-col>
             </el-row>
             <el-row id="notes-section">
                 <el-col :xs="24" :sm="20" :md="18" :lg="8">

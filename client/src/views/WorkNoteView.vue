@@ -34,7 +34,7 @@
                         <p v-for="highlight in currentNote.highlights">
                             {{ highlight }}
                         </p>
-                        <h3>Detailed Report</h3>
+                        <h3 id="report">Detailed Report</h3>
                         <p>{{ currentNote.report }}</p>
                     </el-card>
                 </el-col>
@@ -104,6 +104,7 @@ onMounted(() => {
 
     #work-summary {
         margin-top: 2em;
+
         h3 {
             color: var(--indigo-500);
         }
@@ -111,6 +112,10 @@ onMounted(() => {
         p {
             color: var(--slate-700);
         }
+    }
+
+    #report {
+        white-space: pre-line;
     }
 }
 </style>

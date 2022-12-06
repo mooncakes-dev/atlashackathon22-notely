@@ -22,8 +22,8 @@
                 </el-row>
             </div>
         </template>
-        <div id="tags-section" v-for="tag in tags">
-            <el-tag>
+        <div id="tags-section">
+            <el-tag v-for="tag in tags">
                 {{ tag }}
             </el-tag>
         </div>
@@ -117,5 +117,10 @@ export default {
     .item {
         color: var(--slate-600);
     }
+
+  #tags-section {
+    display: flex;
+    gap: 5px;
+  }
 }
 </style>

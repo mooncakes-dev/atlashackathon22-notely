@@ -20,7 +20,7 @@
             {{ item }}
             <el-icon @click="removeHighlight(item)"> <XCircleIcon /> </el-icon>
         </p>
-        <h4>Tasks finished</h4>
+<!--        <h4>Tasks finished</h4>-->
         <h4>Detailed Report</h4>
         <p id="detailed-report">{{ report }}</p>
     </el-card>
